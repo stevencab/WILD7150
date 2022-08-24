@@ -1,0 +1,83 @@
+---
+title: "WILD7150 Lab 1 - Regression"
+author: "Steven Cabrera"
+date: "2022-08-24"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(readr)
+library(ggplot2)
+library(dplyr)
+```
+
+## Dataset #1
+
+```{r, include = F, echo = F}
+data1 <- read_csv("C:/Users/steve/Desktop/WILD7150/Lab Data/Lab1/Assign1a.csv")
+summary(data1)
+reg1 <- lm(data = data1, WolfSpiders ~ PreySpiders)
+summary(reg1)
+confint(reg1)
+plot(WolfSpiders ~ PreySpiders, data = data1)
+abline(reg1)
+ggplot(data1, aes(x = PreySpiders, y = WolfSpiders)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+For each 1 spider/m^2^ increase in prey spiders, we observed a 1.9174 spiders/m^2^ (± 0.64; ± 95% C.I.) increase in wolf spiders (p = 4.96e-07; r^2^ = 0.49). 
+
+```{r, echo = FALSE, message = F}
+ggplot(data1, aes(x = PreySpiders, y = WolfSpiders)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+
+## Dataset #2
+
+```{r, echo = F, include = F}
+data2 <- read_csv("C:/Users/steve/Desktop/WILD7150/Lab Data/Lab1/Assign1b.csv")
+summary(data2)
+reg2 <- lm(data = data2, Size ~ Elevation)
+summary(reg2)
+confint(reg2)
+ggplot(data2, aes(x = Elevation, y = Size)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+```
+
+For each 1000 m increase in elevation, we observed a 0.9998 cm (± 0.22; ± 95% C.I.) decrease in lotus flower size  (p = <2e-16; r^2^ = 0.14). **(Scaled by a factor of 1000)**
+
+```{r, echo = F, message = F}
+ggplot(data2, aes(x = Elevation, y = Size)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+
+## Dataset #3
+
+
+```{r, include = F, echo = F}
+data3 <- read_csv("C:/Users/steve/Desktop/WILD7150/Lab Data/Lab1/Assign1c.csv")
+summary(data3)
+reg3 <- lm(data = data3, Time ~ Predators)
+summary(reg3)
+confint(reg3)
+ggplot(data3, aes(x = Predators, y = Time)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+For each 1 predators/day increase birds of prey, we observed an 3.55 minute/day (± 3.38; ± 95% C.I.) increase in time spent foraging  (p = 0.0397; r^2^ = 0.03).
+
+```{r, echo = F, message = F}
+ggplot(data3, aes(x = Predators, y = Time)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
