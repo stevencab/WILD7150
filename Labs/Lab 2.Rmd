@@ -1,0 +1,144 @@
+---
+title: "WILD7150 Lab 2 - Assumptions of Regression"
+author: "Steven Cabrera"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(readr)
+library(ggplot2)
+library(dplyr)
+```
+
+## Dataset #1
+
+```{r, include = F, echo = F}
+data1 <- read_csv("Lab Data/Lab2/Ass3Data1.csv")
+plot(PredRate~PreyDens, data = data1)
+res1 <- lm(PredRate~PreyDens, data = data1)
+plot(res1)
+summary(res1)
+residuals(res1)
+plot(residuals(res1)~data1$PreyDens)
+confint(res1)
+abline(res1)
+hist(data1$PredRate)
+
+```
+
+For each 1 prey/ha increase in prey density, we observed a 0.41 prey killer per predator per day (± 0.19; ± 95% C.I.) increase in predation rate (p = 3.23e-05; r^2^ = 0.11). 
+
+**Violates assumption of homoscedasticity**    
+
+```{r, echo = FALSE, message = F}
+plot(PredRate~PreyDens, data = data1)
+abline(res1)
+```
+
+## Dataset #2
+
+```{r, include = F, echo = F}
+data2 <- read_csv("Lab Data/Lab2/Ass3Data2.csv")
+plot(BasalArea~Age, data = data2)
+res2 <- lm(BasalArea~Age, data = data2)
+plot(res2)
+residuals(res2)
+plot(residuals(res2)~data2$Age)
+summary(res2)
+confint(res2)
+abline(res2)
+hist(data2$BasalArea)
+acf(residuals(res2)) [order(data2$Age)]
+
+```
+
+For each 1 year increase in stand age, we observed a 1.83 m2 (± 0.079; ± 95% C.I.) increase in basal area (p = <2e-16; r^2^ = 0.97). 
+
+**Violates assumption of no autocorrelation**  
+
+```{r, echo = FALSE, message = F}
+acf(residuals(res2)) [order(data2$Age)]
+```
+
+
+## Dataset #3
+
+```{r, include = F, echo = F}
+data3 <- read_csv("Lab Data/Lab2/Ass3Data3.csv")
+plot(PreyDens~PredDens, data = data3)
+res3 <- lm(PreyDens~PredDens, data = data3)
+plot(res3)
+residuals(res3)
+plot(residuals(res3)~data3$PredDens)
+summary(res3)
+confint(res3)
+abline(res3)
+hist(data3$PreyDens)
+acf(residuals(res3)) [order(data3$PredDens)]
+
+```
+
+For each 1 predators/ha increase in predator density, we observed a 1.24 prey/ha (± 0.43; ± 95% C.I.) decrease in prey density (p = 6.13e-07; r^2^ = 0.41). 
+
+**No assumptions violated**  
+```{r, echo = FALSE, message = F}
+plot(PreyDens~PredDens, data = data3)
+abline(res3)
+```
+
+## Dataset #4
+
+```{r, include = F, echo = F}
+data4 <- read_csv("Lab Data/Lab2/Ass3Data4.csv")
+plot(LitterSize~PreyDens, data = data4)
+res4 <- lm(LitterSize~PreyDens, data = data4)
+plot(res4)
+residuals(res4)
+plot(residuals(res4)~data4$PreyDens)
+abline(a=0,b=0)
+summary(res4)
+confint(res4)
+abline(res4)
+hist(data4$LitterSize)
+acf(residuals(res4)) [order(data4$PreyDens)]
+
+```
+
+For each 1 prey/ha increase in prey density, we observed a 0.37 pup (± 0.17; ± 95% C.I.) increase in coyote litter size (p = 5.75e-05; r^2^ = 0.15). 
+
+**Violates assumption of normality**  
+
+```{r, echo = FALSE, message = F}
+plot(residuals(res4)~data4$PreyDens)
+abline(a=0,b=0)
+hist(data4$LitterSize)
+```
+
+## Dataset #5
+
+```{r, include = F, echo = F}
+data5 <- read_csv("Lab Data/Lab2/Ass3Data5.csv")
+plot(ProbUse~RoadDens, data = data5)
+res5 <- lm(ProbUse~RoadDens, data = data5)
+plot(res5)
+residuals(res5)
+plot(residuals(res5)~data5$RoadDens)
+abline(a=0,b=0)
+summary(res5)
+confint(res5)
+abline(res5)
+hist(data5$ProbUse)
+acf(residuals(res5)) [order(data5$RoadDens)]
+
+```
+
+**Though it is a non-significant relationship**, for each 1 road/km^2^ increase in road density, we observed a 0.0011 percent (± 0.17; ± 95% C.I.) decrease in probability of habitat use by wolves (p = 0.738; r^2^ = 0.0012). 
+
+**Violates assumption of linearity**  
+
+```{r, echo = FALSE, message = F}
+plot(ProbUse~RoadDens, data = data5)
+abline(res5)
+```
