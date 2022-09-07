@@ -64,7 +64,7 @@ resaov2 <- aov(DeerKill~Hunt, data = data3)
 TukeyHSD(resaov2)
 ```
 
-1. ANOVA indicated that at least two of the habitats were significantly different from each other (p = 2.005e-10).  
+1. ANOVA indicated that at least two of the hunting methods were significantly different from each other (p = 2.005e-10).  
 
 2.  
 
