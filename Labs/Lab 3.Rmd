@@ -82,18 +82,22 @@ plot(Biomass~as.factor(Fertilizer), data = data4)
 data4$Fertilizer <- factor(data4$Fertilizer, levels = c("2","0","4","6","8","10"))
 res4 <- lm(Biomass~as.factor(Fertilizer), data = data4)
 summary(res4)
-res4 <- lm(Biomass~(Fertilizer), data = data4)
-summary(res4)
-anova(res4)
-confint(res4)
-abline(res4)
-resaov3 <- aov(DeerKill~Hunt, data = data4)
-TukeyHSD(resaov2)
 ```
-1. We found that using 2 g fertilizer had 2.14 (± 1.50; 95% C.I.) kg/ha more biomass than plots with 0 g fertilizer in restored prairies (p = 0.0070).
-2. We found that using 4 g fertilizer had 2.18 (± 1.50; 95% C.I.) kg/ha mroe biomass than plots with 2 g fertilizer in restored prairies (p = 0.0061).
-3. 
-Run an analysis to determine the relationship between Biomass and Fertilizer, but in this case, treat Fertilizer as a continuous variable. Report the results using the standard sentence.
-Run an F-drop test to compare the model where Fertilizer was treated as categorical (from questions 1 and 2) to the model where fertilizer was treated as continuous (from question 3). What is the F-statistic and p-value from this f-drop test?
-Based on the results from 4, which model is preferred: the one where Fertilizer is continuous or the one where Fertilizer is categorical?
-Continued from 5. What does that mean about the nature of the relationship between Biomass and Fertilizer?
+
+```{r, include = F, echo = F}
+data4cont <- read_csv("Lab Data/Lab3/Ass5Data4.csv")
+plot(Biomass~Fertilizer, data = data4cont)
+res4cont <- lm(Biomass~Fertilizer, data = data4cont)
+summary(res4cont)
+confint(res4cont)
+data4$Fertilizer <- factor(data4$Fertilizer, levels = c("2","0","4","6","8","10"))
+res4 <- lm(Biomass~as.factor(Fertilizer), data = data4)
+anova(res4,res4cont)
+```
+
+1. We found that using 2 g fertilizer had 2.14 (± 1.50; 95% C.I.) kg/ha more biomass than plots with 0 g fertilizer in restored prairies (p = 0.0070).  
+2. We found that using 4 g fertilizer had 2.18 (± 1.50; 95% C.I.) kg/ha mroe biomass than plots with 2 g fertilizer in restored prairies (p = 0.0061).  
+3. We found that for each 1 g increase in fertilizer, we observed a 0.040 (± 0.25; 95% C.I.) kg/ha decrease in biomass (p = 0.75, r^2^ = 0.0038) *nonsignificant relationship*  
+4. The f-drop F-statistic is 22.18 and p = 9.07e-08.  
+5. *The model where Fertilizer is categorical is preferred.*  
+6. The relationship between biomass and fertilizer is non-linear.  
