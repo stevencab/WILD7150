@@ -20,12 +20,56 @@ library(dplyr)
 
 ## Wednesday, August 24, 2022
 
-Regression analysis in R. 
-Example: y = biomass (kg), x = rainfall (cm) \ True relationship
+Regression analysis in R.   
+Example: y = biomass (kg), x = rainfall (cm)    
+True relationship would be: y = 2 +3x + $~N(o,sigma)  
+B0 is usually a nuisance parameter, only really useful to best fit the line.  
+B1 = slope  
+r2, variation in y explained in x  
+adjusted r2 takes r2 based on number of x variables in model, in truth x variable is added, r2 goes up. **use multiple r2 when reporting in labs**  
+function confint only produces limits. need to do math to find CI.
+upper minus lower / 2 **OR** upper - b1, b1- lower, report only one  
+
+Generic sentence  
+ 
+**For each 1 [x-unit] increase in [x], we found a [B1] [y-unit] [+/- 95% CI]; 95% CI [increase/decrease] in [y] ([p-value, r^2^])**  
+Include units, specify you gave the CI (some people give SE), for unit rounding - only report two significant figs, use increase/decrease to specify pos or neg slope.  
+If necessary - scale data to make data more interpretable.   
+
+```{r, echo = F, message = F, render = F}
+data <- read_csv("Lab Data/Lab1/Assign1a.csv")
+res <- lm(data = data, WolfSpiders ~ PreySpiders)
+summary(res)
+anova(res)
+plot <- plot(WolfSpiders ~ PreySpiders, data = data)
+```
+
 
 ## LAB - Wednesday, August 24, 2022
+ 
+Not much going on. 
 
 ## Friday, August 26, 2022
+
+Scaling is very useful for conveying story message/interpreting the *biological signifigance*   
+P-value: probability of getting observed results when the null is true.  
+Type I Error: detecting a significant effort when there is none (will happen about 5% of the time).  
+
+
+**Assumptioms of GLM**  
+If you ignore/violate assumptions,  
+  1. Slopes usually aren't effected  
+  2. P-values and CIs are conservative (i.e., they are bigger)  
+  3. Linear models are robust to violating of assumptions.  
+**Actual assumptions**    
+ * 1. Continuous Y  
+ * 2. Error is normally distributed - 
+ * 3. Linear relationship between X and Y     
+    + Need to test or visualize non-linear relationships. Basal area on other things?  
+  4. Homoscodastiscity of variance  - unequal variance
+  5. No autocorrelation/independent samples - one data point in Y is related to the next or subsequent Y data point
+
+
 
 ## Monday, August 29, 2022
 
