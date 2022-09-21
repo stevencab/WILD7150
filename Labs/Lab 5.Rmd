@@ -13,24 +13,92 @@ library(ggplot2)
 library(dplyr)
 library(car)
 library(carData)
-library(emmeans)
 ```
 
 ## Dataset #1 
 
 ```{r, include = F, echo = F}
 data1 <- read_csv("Lab Data/Lab5/Assignment4b.csv")
+res1 <- lm(data = data1, SqDens~RoadDensity+Forest+RoadDensity:Forest)
+summary(res1)
+pine <- filter(data1, Forest=="Pine")
+pineres <- lm(data=pine, SqDens~RoadDensity)
+summary(pineres)
+confint(pineres)
+hardwood <- filter(data1, Forest=="Hardwood")
+hardwoodres <- lm(data=hardwood, SqDens~RoadDensity)
+summary(hardwoodres)
+confint(hardwoodres)
+ggplot(data1, aes(x=RoadDensity, y = SqDens, color = Forest)) +
+  geom_smooth(method = "lm")
+
 ```
-In this example, you have two continuous factors (e.g., elevation [meters] and degrees north latitude [degrees]), and one categorical factor with three groups (country). The dependent variable is lotus plant size (grams). In this system, there is no collinearity among your variables.
+
 
 1. $Y = B_0 + B_1 RoadDensity + B_2 Habitat + B_3 RoadDensity * Habitat + E \sim \text{N}(\mu, \sigma)$  
-    * X varibles:
-        + $X_1$ = Latitude (continuous, degrees)
-        + $X_2$ = Elevation (continuous, meters)
-        + $X_3$ = Country (categorical, three groups = "India", "Nepal", "Tibet" ; reference = "India" in this case)
+
     * $B$ variables:
-        + $B_0$: y-intercept
-        + $B_1$: slope (estimate) of latitude
-        + $B_2$: slope (estimate) of elevation
-        + $B_3$: slope (estimate) of country
+        + $B_0$: effect on squirrel density when all x's are 0
+        + $B_1$: effect of road density on squirrel density in hardwood
+        + $B_2$: difference in squirrel density between pine and hardwood habitat 
+        + $B_3$: the effect of road density and differences in pine and hardwood habitat on squirrel density
+        
+2. We observed a significant interaction between pine and hardwood habitats (p = 3.70e-09), therefore we will analyze the two groups separately. 
+
+3. * In pine habitats, for each 1 road/sq. km increase in road density, we observed a 0.99 squirrels/ha (± 0.13; 95% C.I.) decrease in squirrel density (p = 3.3e-15, r^2^ = 0.89).  
+    * In hardwood forests, for each 1 road/sq. km increase in road density, we observed a 0.47 (± 0.13; 95% C.I.) decrease in squirrel density (p = 4.94e-8, r^2^ = 0.66).
+    
+## Dataset #2
  
+```{r, include = F, echo = F}
+data2 <- read_csv("Lab Data/Lab5/Assignment4c.csv")
+res2 <- lm(data = data2, Size~Sex+Treatment+Sex:Treatment)
+summary(res2)
+male <- filter(data2, Sex=="Males")
+maleres <- lm(data=male, Size~Treatment)
+summary(maleres)
+confint(maleres)
+fem <- filter(data2, Sex=="Females")
+femres <- lm(data=fem, Size~Treatment)
+summary(femres)
+confint(femres)
+```
+
+1. $Y = B_0 + B_1 Sex + B_2 Treatment + B_3 Sex * Treatment + E \sim \text{N}(\mu, \sigma)$ 
+
+    * $B$ variables:
+        + $B_0$: effect on size when all x's are 0
+        + $B_1$: difference in sex on size 
+        + $B_2$: difference in treatment on size 
+        + $B_3$: treatment difference in size between males and females
+
+2. We observed a significant interaction between sex and treatment (p = 3.06e-09), therefore we will analyze the two groups separately. 
+
+3. * In males, we found that those using hormone treatment had 0.96 (± 0.11; 95% C.I.) increase in size (p = < 2e-16) as opposed to placebo.  
+  * In females, we found that those using hormone treatment had 0.47 (± 0.10; 95% C.I.) increase in size (p = 3.25e-12) as opposed to placebo.
+    
+## Dataset #3
+ 
+```{r, include = F, echo = F}
+data3 <- read_csv("Lab Data/Lab5/Assignment4d.csv")
+res3 <- lm(data=data3, Size~Elevation+Latitude+Elevation:Latitude)
+summary(res3)
+confint(res3)
+res4 <- lm(data=data3, Size~Elevation)
+summary(res4)
+confint(res4)
+res5 <- lm(data=data3, Size~Latitude)
+summary(res5)
+confint(res5)
+```
+
+
+1. $Y = B_0 + B_1 Elevation + B_2 Latitude + B_3 Elevation * Latitude + E \sim \text{N}(\mu, \sigma)$ 
+
+2. * $B$ variables:
+        + $B_0$: effect on size when all x's are 0
+        + $B_1$: effect of elevation on size 
+        + $B_2$: effect of latitude on size 
+        + $B_3$: effect of elevation and latitude on size
+        
+3. For each 100 m increase in elevation, we observed a 0.125 (± 0.0567; 95% C.I.) cm decrease in size at zero latitude (p = 3.10e-05). For each 100 degree change in latitude, we observed a 0.17 (± 0.0517; 95% C.I.) cm decrease in size at zero elevation (p = 4.79e-09). We found a significant interaction (p = < 2e-16), such that for each 1 m increase in elevation, we observed that the slope of the latitude-size relationship increased by 0.001005 cm/degrees (± 3.6e-07; 95% C.I.).  

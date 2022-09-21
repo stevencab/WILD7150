@@ -372,36 +372,98 @@ pre code {
 
 <div id="dataset-1" class="section level2">
 <h2>Dataset #1</h2>
-<p>In this example, you have two continuous factors (e.g., elevation
-[meters] and degrees north latitude [degrees]), and one categorical
-factor with three groups (country). The dependent variable is lotus
-plant size (grams). In this system, there is no collinearity among your
-variables.</p>
 <ol style="list-style-type: decimal">
-<li><span class="math inline">\(Y = B_0 + B_1 RoadDensity + B_2 Habitat
-+ B_3 RoadDensity * Habitat + E \sim \text{N}(\mu, \sigma)\)</span>
+<li><p><span class="math inline">\(Y = B_0 + B_1 RoadDensity + B_2
+Habitat + B_3 RoadDensity * Habitat + E \sim \text{N}(\mu,
+\sigma)\)</span></p>
 <ul>
-<li>X varibles:
-<ul>
-<li><span class="math inline">\(X_1\)</span> = Latitude (continuous,
-degrees)</li>
-<li><span class="math inline">\(X_2\)</span> = Elevation (continuous,
-meters)</li>
-<li><span class="math inline">\(X_3\)</span> = Country (categorical,
-three groups = “India”, “Nepal”, “Tibet” ; reference = “India” in this
-case)</li>
-</ul></li>
 <li><span class="math inline">\(B\)</span> variables:
 <ul>
-<li><span class="math inline">\(B_0\)</span>: y-intercept</li>
-<li><span class="math inline">\(B_1\)</span>: slope (estimate) of
-latitude</li>
-<li><span class="math inline">\(B_2\)</span>: slope (estimate) of
-elevation</li>
-<li><span class="math inline">\(B_3\)</span>: slope (estimate) of
-country</li>
+<li><span class="math inline">\(B_0\)</span>: effect on squirrel density
+when all x’s are 0</li>
+<li><span class="math inline">\(B_1\)</span>: effect of road density on
+squirrel density in hardwood</li>
+<li><span class="math inline">\(B_2\)</span>: difference in squirrel
+density between pine and hardwood habitat</li>
+<li><span class="math inline">\(B_3\)</span>: the effect of road density
+and differences in pine and hardwood habitat on squirrel density</li>
 </ul></li>
 </ul></li>
+<li><p>We observed a significant interaction between pine and hardwood
+habitats (p = 3.70e-09), therefore we will analyze the two groups
+separately.</p></li>
+<li><ul>
+<li>In pine habitats, for each 1 road/sq. km increase in road density,
+we observed a 0.99 squirrels/ha (± 0.13; 95% C.I.) decrease in squirrel
+density (p = 3.3e-15, r<sup>2</sup> = 0.89).<br />
+</li>
+<li>In hardwood forests, for each 1 road/sq. km increase in road
+density, we observed a 0.47 (± 0.13; 95% C.I.) decrease in squirrel
+density (p = 4.94e-8, r<sup>2</sup> = 0.66).</li>
+</ul></li>
+</ol>
+</div>
+<div id="dataset-2" class="section level2">
+<h2>Dataset #2</h2>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(Y = B_0 + B_1 Sex + B_2 Treatment +
+B_3 Sex * Treatment + E \sim \text{N}(\mu, \sigma)\)</span></p>
+<ul>
+<li><span class="math inline">\(B\)</span> variables:
+<ul>
+<li><span class="math inline">\(B_0\)</span>: effect on size when all
+x’s are 0</li>
+<li><span class="math inline">\(B_1\)</span>: difference in sex on
+size</li>
+<li><span class="math inline">\(B_2\)</span>: difference in treatment on
+size</li>
+<li><span class="math inline">\(B_3\)</span>: treatment difference in
+size between males and females</li>
+</ul></li>
+</ul></li>
+<li><p>We observed a significant interaction between sex and treatment
+(p = 3.06e-09), therefore we will analyze the two groups
+separately.</p></li>
+<li><ul>
+<li>In males, we found that those using hormone treatment had 0.96 (±
+0.11; 95% C.I.) increase in size (p = &lt; 2e-16) as opposed to
+placebo.<br />
+</li>
+</ul></li>
+</ol>
+<ul>
+<li>In females, we found that those using hormone treatment had 0.47 (±
+0.10; 95% C.I.) increase in size (p = 3.25e-12) as opposed to
+placebo.</li>
+</ul>
+</div>
+<div id="dataset-3" class="section level2">
+<h2>Dataset #3</h2>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(Y = B_0 + B_1 Elevation + B_2
+Latitude + B_3 Elevation * Latitude + E \sim \text{N}(\mu,
+\sigma)\)</span></p></li>
+<li><ul>
+<li><span class="math inline">\(B\)</span> variables:
+<ul>
+<li><span class="math inline">\(B_0\)</span>: effect on size when all
+x’s are 0</li>
+<li><span class="math inline">\(B_1\)</span>: effect of elevation on
+size</li>
+<li><span class="math inline">\(B_2\)</span>: effect of latitude on
+size</li>
+<li><span class="math inline">\(B_3\)</span>: effect of elevation and
+latitude on size</li>
+</ul></li>
+</ul></li>
+<li><p>For each 100 m increase in elevation, we observed a 0.125 (±
+0.0567; 95% C.I.) cm decrease in size at zero latitude (p = 3.10e-05).
+For each 100 degree change in latitude, we observed a 0.17 (± 0.0517;
+95% C.I.) cm decrease in size at zero elevation (p = 4.79e-09). We found
+a significant interaction (p = &lt; 2e-16), such that for each 1 m
+increase in elevation, we observed that the slope of the latitude-size
+relationship increased by 0.001005 cm/degrees (± 3.6e-07; 95%
+C.I.).</p></li>
 </ol>
 </div>
 
