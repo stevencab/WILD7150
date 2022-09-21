@@ -1,0 +1,148 @@
+---
+title: "Lab 4"
+author: "Steven Cabrera"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+library(readr)
+library(ggplot2)
+library(dplyr)
+library(car)
+library(carData)
+library(emmeans)
+```
+
+## Dataset #1 
+
+```{r, include = F, echo = F}
+data1 <- read_csv("Lab Data/Lab4/Assignment4.csv")
+res1 <- lm(data = data1, Size~Elevation+Latitude+as.factor(Country))
+res2 <- lm(data = data1, Size~Elevation+Latitude)
+anova(res1,res2)
+summary(aov(res1))
+summary(res1)
+confint(res1)
+data1$Country <- factor(data1$Country, levels = c("Nepal","Tibet","India"))
+```
+In this example, you have two continuous factors (e.g., elevation [meters] and degrees north latitude [degrees]), and one categorical factor with three groups (country). The dependent variable is lotus plant size (grams). In this system, there is no collinearity among your variables.
+
+1. $Y = B_0 + B_1 X_1 + B_2 X_2 + B_3 X_3 + E \sim \text{N}(\mu, \sigma)$  
+    * X varibles:
+        + $X_1$ = Latitude (continuous, degrees)
+        + $X_2$ = Elevation (continuous, meters)
+        + $X_3$ = Country (categorical, three groups = "India", "Nepal", "Tibet" ; reference = "India" in this case)
+    
+2. $B$ variables:
+    * $B_0$: y-intercept
+    * $B_1$: slope (estimate) of latitude
+    * $B_2$: slope (estimate) of elevation
+    * $B_3$: slope (estimate) of country
+    
+4. The significance of "Country" as a whole is $< 2.2e^{-16}$.  
+5. Example sentences:
+    * For each 100 m increase in elevation, we observed a 0.162 (± 0.024; 95% C.I.) grams decrease in lotus plant size (p = < 2e-16).
+    * For each 0.1 latitude increase, we observed a .1006 (± 0.017; 95% C.I.) grams decrease in lotus plant size (p = < 2e-16).
+    * We found that Nepal had 3.59 (± 051; 95% C.I.) g less in lotus plant size than India (p = < 2e-16).
+    * We found that Tibet had 1.73 (± 0.49; 95% C.I.) g less in lotus plant size than India (p = < 4.39e-10)
+    * We found that Tibet had 1.86 (± 0.50; 95% C.I.) g more in lotus plant size than Nepal (p = 4.92e-11).
+
+## Dataset #2 
+
+```{r, include = F, echo = F}
+data2 <- read_csv("Lab Data/Lab4/Assignment4.1.csv")
+plot(data=data2, Food~Understory)
+res2 <- lm(Food~Understory, data=data2)
+summary(res2)
+abline(res2)
+res2one <- lm(Bunnies~Food, data = data2)
+summary(res2one)
+confint(res2one)
+res2two <- lm(Bunnies~Understory, data = data2)
+summary(res2two)
+confint(res2two)
+bigone <- lm(Bunnies~Understory+Food, data = data2)
+summary(bigone)
+confint(bigone)
+vif(bigone)
+```
+
+
+2.  
+```{r, echo = F, message = F}
+plot(data=data2, Food~Understory)
+abline(res2)
+```
+
+3. The $r^2$ between food and understory is 0.7746. 
+
+4.  
+```{r, echo = F, message = F}
+plot(data=data2, Bunnies~Understory)
+```
+
+5.  
+```{r, echo = F, message = F}
+plot(data=data2, Bunnies~Food)
+```
+
+6. For each 1 kg of browse per square meter increase, we observed a 2.78 (± 0.087; 95% C.I.) bunnies/ha increase in density (p = < 2e-16, $r^2$ = 0.976).  
+
+7. For each 0.1 percent understory cover increase, we observed a 0.905 (± 0.065; 95% C.I.) bunnies/ha increase in density (p = <2e-16, $r^2$ = 0.885).
+
+8. For each 0.1 percent understory cover increase, we observed a 0.304 (± 0.014; 95% C.I.) bunnies/ha increase in density (p = <2e-16, $r^2$ = 0.99). For each 1 kg of browse per square meter increase, we observed a 2.00 (± 0.042; 95% C.I.) bunnies/ha increase in density (p = < 2e-16, $r^2$ = 0.99).  
+
+9. The VIF for understory AND food is 4.43751.
+
+10. The coefficient estimates in the multiple regression model capture truth more accurately. The model estimates the effect of understory as 3.04 (truth = 3) as opposed to 9 in a simple regression. The model estimates the effect of understory as 1.997 (truth = 2) as opposed to 2.78 in a simple regression. I would include both variables in a model, while stating that these two variables are potentially confounding. I've used this exercise as a reminder of the utility of plotting data to visualize individual relationships to compare effect sizes, as well as the combined effect of including multiple variables in a model. 
+
+ 
+
+## Dataset #3 
+
+```{r, include = F, echo = F}
+data3 <- read_csv("Lab Data/Lab4/Assignment4.2.csv")
+res5 <- lm(data=data3, Organic~Sediment)
+summary(res5)
+res6 <- lm(data=data3, Clarity~Sediment)
+res7 <- lm(data=data3, Clarity~Organic)
+summary(res6)
+confint(res6)
+summary(res7)
+confint(res7)
+res8 <- lm(data=data3, Clarity~Sediment+Organic)
+summary(res8)
+confint(res8)
+vif(res8)
+```
+
+2.  
+```{r, message = F, echo = F}
+plot(data = data3, Organic~Sediment)
+```
+
+3. The $r^2$ between sediment and organic matter is 0.7289. 
+
+4.  
+```{r, echo = F, message = F}
+plot(data=data3, Clarity~Sediment)
+```
+
+5.  
+```{r, echo = F, message = F}
+plot(data=data3, Clarity~Organic)
+```
+
+6. For each 1 gram/cm3 of sediment, we observed a 0.404 (± 0.016; 95% C.I.) cm decrease in clarity (p = < 2e-16, $r^2$ = 0.9635).  
+
+7. For each 1 gram/cm3 of organic matter, we observed a 0.32 (± 0.041; 95% C.I.) cm decrease in clarity (p = <2e-16, $r^2$ = 0.706).
+
+8. For each 1 gram/cm3 of sediment, we observed a 0.4007 (± 0.0304; 95% C.I.) cm decrease in clarity (p = < 2e-16). For each 1 gram/cm3 of organic matter, we observed a 0.0034 (± 0.028; 95% C.I.) cm decrease in clarity (p = 0.81 **non-significant value**).  
+
+9. The VIF for sediment AND organic is 3.688.  
+
+10. The coefficient estimate of sediment (which is a better "index" of run-off) did not change much when modeled as a single regression compared to multiple regression with organic matter. In both bases, the coefficient is very close to truth (0.4 g/cm3). As the coefficient does not change, the collinear organic matter variable can be considered "redundant" and removed from the model, indicating no observable impact on run-off. I've learned that applying multiple models with the same data can be useful in exploratory analyses for eliminating redundant variables in collinear data.  
+ 

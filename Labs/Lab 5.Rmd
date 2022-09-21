@@ -1,0 +1,36 @@
+---
+title: "Lab 5"
+author: "Steven Cabrera"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+library(readr)
+library(ggplot2)
+library(dplyr)
+library(car)
+library(carData)
+library(emmeans)
+```
+
+## Dataset #1 
+
+```{r, include = F, echo = F}
+data1 <- read_csv("Lab Data/Lab5/Assignment4b.csv")
+```
+In this example, you have two continuous factors (e.g., elevation [meters] and degrees north latitude [degrees]), and one categorical factor with three groups (country). The dependent variable is lotus plant size (grams). In this system, there is no collinearity among your variables.
+
+1. $Y = B_0 + B_1 RoadDensity + B_2 Habitat + B_3 RoadDensity * Habitat + E \sim \text{N}(\mu, \sigma)$  
+    * X varibles:
+        + $X_1$ = Latitude (continuous, degrees)
+        + $X_2$ = Elevation (continuous, meters)
+        + $X_3$ = Country (categorical, three groups = "India", "Nepal", "Tibet" ; reference = "India" in this case)
+    * $B$ variables:
+        + $B_0$: y-intercept
+        + $B_1$: slope (estimate) of latitude
+        + $B_2$: slope (estimate) of elevation
+        + $B_3$: slope (estimate) of country
+ 
