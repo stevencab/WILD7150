@@ -1,0 +1,92 @@
+---
+title: "Lab 6"
+author: "Steven Cabrera"
+date: "2022-09-28"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+library(readr)
+library(ggplot2)
+library(dplyr)
+library(car)
+library(carData)
+library(nlme)
+```
+
+## Dataset #1 
+
+```{r, include = F, echo = F}
+data1 <- read_csv("Lab Data/Lab6/AssignA.csv")
+res1 <- lm(data = data1, Density~Plot)
+summary(res1)
+confint(res1)
+res1a <- lme(data = data1, Density~Plot, random = ~1|Field)
+summary(res1a)
+intervals(res1a)
+data1$Plot <- factor(data1$Plot, levels = c("dBurn","Control","Fertilize"))
+```
+
+1. We found that burned plots had 5.3 (± 3.93; 95% C.I.) hoppers/ha more than control plots (p = 0.0104), while fertilizer plots had 5.20 (± 3.93; 95% C.I.) hoppers/ha more than control plots (p = 0.012). Fertilizer plots had 0.14 (± 3.93; 95% C.I.) hoppers/ha less than burned plots (p = 0.94 **non-significant relationship**.  
+
+2. We found that burned plots had 5.3 (± 3.27; 95% C.I.) hoppers/ha more than control plots (p = 0.0036), while fertilizer plots had 5.20 (± 3.27; 95% C.I.) hoppers/ha more than control plots (p = 0.0044). Fertilizer plots had 0.14 (± 3.27; 95% C.I.) hoppers/ha less than burned plots (p = 0.93) **non-significant relationship**.  
+
+3. The standard deviation due to random effect of Field is 2.23. 
+
+4. The lme model increases power (smaller confidence intervals and lower p-values).  
+
+
+## Dataset #2 
+
+```{r, include = F, echo = F}
+data2 <- read_csv("Lab Data/Lab6/AssignB.csv")
+res2 <- lm(data = data2, Size~Fertilizer*Hormone)
+summary(res2)
+confint(res2)
+res2a <- lm(data = data2, Size~Fertilizer+Hormone)
+anova(res2,res2a)
+summary(res2a)
+confint(res2a)
+res2b <- lme(data = data2, Size~Fertilizer*Hormone, random = ~1|Field)
+summary(res2b)
+intervals(res2b)
+
+```
+
+
+1. We observed a **non-significant** interaction between Fertilizer and Hormone (p = 0.94). Using a fertilizer treatment a 9.03 (± 6.12; 95% C.I.) cm increase in tree size (p = 0.0052), compared to a no fertilizer treatment. Using a hormone treatment had a 2.5 (± 6.12; 95% C.I.) cm increase in tree size (p = 0.408) compared to a no hormone treatment.  
+
+2. We observed a **non-significant** interaction between Fertilizer and Hormone (p = 0.56). Using a fertilizer treatment a 9.03 (± 0.75; 95% C.I.) cm increase in tree size (p = 0.000001), compared to a no fertilizer treatment. Using a hormone treatment had a 2.51 (± 0.75; 95% C.I.) cm increase in tree size (p = 0.000001) compared to a no hormone treatment.
+
+3. The standard deviation due to random effect of Field is 8.55. 
+
+4. The lme model increases power (smaller confidence intervals and lower p-values).  
+
+## Dataset #3
+```{r, include = F, echo = F}
+data3 <- read_csv("Lab Data/Lab6/AssignC.csv")
+res3 <- lm(data = data3, Size~Age)
+summary(res3)
+confint(res3)
+res3a <- lme(data = data3, Size~Age, random = ~1|Individual)
+summary(res3a)
+intervals(res3a)
+res3b <- lme(data = data3, Size~Age, random = ~1|Individual,correlation = corARMA(p = 0, q = 1))
+summary(res3b)
+intervals(res3b)
+anova(res3b,res3a)
+```
+
+1. For each 1 year, we observed a 1.02 (± 0.68; 95% C.I.) m increase in tree size (p = 0.0038).  
+
+2. For each 1 year, we observed a 1.02 (± 0.55; 95% C.I.) m increase in tree size (p = 3e-4).  
+
+For each 1 year, we observed a 1.02 (± 0.607; 95% C.I.) m increase in tree size (p = 1e-3) **running average autocorrelated**
+
+3. The standard deviation due to random effect of Field is 9.00.
+
+4. When modeling a moving average autocorrelation, we observed a Theta of 0.13 and standard deviation due to random effects 8.83. An F-drop test comparing models showed a **non-signifcant** improvement to the model (p = 0.16). 
+
+5. The lme model increases power (smaller confidence intervals and lower p-values).  
