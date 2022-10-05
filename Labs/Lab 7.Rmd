@@ -1,0 +1,45 @@
+---
+title: "Lab 7"
+author: "Steven Cabrera"
+date: "2022-10-05"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+library(readr)
+library(ggplot2)
+library(dplyr)
+library(car)
+library(carData)
+library(nlme)
+```
+
+## Dataset #1 
+
+```{r, include = F, echo = F}
+data1 <- read_csv("Lab Data/Lab7/TPRData.csv")
+unique(data1$EVENTS)
+unique(data1$PHASE)
+res1 <- lme(data = data1, Heart~PHASE+EVENTS+Day, random = ~1|DOG/PHASE/Day)
+summary(res1)
+intervals(res1)
+
+data1$EVENTS <- factor(data1$EVENTS, levels = c("Pre","Post Sprints","Post A Frame","Post Run","Post 10 Minutes", "Post 20 Minutes", "Post Jumps"))
+```
+
+1. Though **non-significant**, we found that dogs in the conditioning treatment had 1.54 (± 6.58; ± 95% C.I.) heart rate greater than those dogs in the baseline treatment (p = 0.60).  
+
+2. Though **non-significant**, we found that for each 1 day, we observed a 0.75 (± 1.08; ± 95% C.I.) heart rate decrease in dogs (p = 0.33).  
+
+3. We observed that 20 minutes post-exercise group, dogs had 6.36 (± 5.07; ± 95% C.I.) heart rate less than in 10 minutes post-exercise group (p = 0.014).  
+
+4. We observed that after the post run exercise, dogs had 13.6 (± 5.07; ± 95% C.I.) heart rate less than in the post jump exercise (p = 0.0).  
+
+5. We observed that after the A frame exercise, dogs had 14.5 (± 5.07; ± 95% C.I.) heart rate more than before any exercise (p = 0.0).  
+
+6. The standard deviation due to dog is 22.4.
+
+7. Heart rate is likely to increase with exercise regardless of conditioning or intensity activity. It would be interesting to assess changes in heart rate before, while performing exercise, and recovering from exercise to see the effect of conditioning. 
+

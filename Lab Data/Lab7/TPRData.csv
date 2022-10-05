@@ -1,0 +1,561 @@
+PHASE,EVENTS,DOG,Day,Heart
+Baseline,Pre,Barney,1,130
+Baseline,Post Sprints,Barney,1,220
+Baseline,Post Jumps,Barney,1,230
+Baseline,Post A Frame,Barney,1,198
+Baseline,Post Run,Barney,1,160
+Baseline,Post 10 Minutes,Barney,1,130
+Baseline,Post 20 Minutes,Barney,1,160
+Baseline,Pre,Barney,2,125
+Baseline,Post Sprints,Barney,2,210
+Baseline,Post Jumps,Barney,2,220
+Baseline,Post A Frame,Barney,2,204
+Baseline,Post Run,Barney,2,170
+Baseline,Post 10 Minutes,Barney,2,190
+Baseline,Post 20 Minutes,Barney,2,120
+Baseline,Pre,Barney,3,150
+Baseline,Post Sprints,Barney,3,215
+Baseline,Post Jumps,Barney,3,198
+Baseline,Post A Frame,Barney,3,228
+Baseline,Post Run,Barney,3,155
+Baseline,Post 10 Minutes,Barney,3,140
+Baseline,Post 20 Minutes,Barney,3,105
+Baseline,Pre,Barney,4,130
+Baseline,Post Sprints,Barney,4,225
+Baseline,Post Jumps,Barney,4,185
+Baseline,Post A Frame,Barney,4,204
+Baseline,Post Run,Barney,4,195
+Baseline,Post 10 Minutes,Barney,4,130
+Baseline,Post 20 Minutes,Barney,4,120
+Baseline,Pre,Barney,5,170
+Baseline,Post Sprints,Barney,5,180
+Baseline,Post Jumps,Barney,5,175
+Baseline,Post A Frame,Barney,5,165
+Baseline,Post Run,Barney,5,156
+Baseline,Post 10 Minutes,Barney,5,125
+Baseline,Post 20 Minutes,Barney,5,120
+PC,Pre,Barney,1,164
+PC,Post Sprints,Barney,1,208
+PC,Post Jumps,Barney,1,196
+PC,Post A Frame,Barney,1,188
+PC,Post Run,Barney,1,168
+PC,Post 10 Minutes,Barney,1,108
+PC,Post 20 Minutes,Barney,1,112
+PC,Pre,Barney,2,120
+PC,Post Sprints,Barney,2,156
+PC,Post Jumps,Barney,2,176
+PC,Post A Frame,Barney,2,164
+PC,Post Run,Barney,2,140
+PC,Post 10 Minutes,Barney,2,152
+PC,Post 20 Minutes,Barney,2,148
+PC,Pre,Barney,3,164
+PC,Post Sprints,Barney,3,188
+PC,Post Jumps,Barney,3,196
+PC,Post A Frame,Barney,3,160
+PC,Post Run,Barney,3,152
+PC,Post 10 Minutes,Barney,3,124
+PC,Post 20 Minutes,Barney,3,120
+PC,Pre,Barney,4,140
+PC,Post Sprints,Barney,4,188
+PC,Post Jumps,Barney,4,196
+PC,Post A Frame,Barney,4,180
+PC,Post Run,Barney,4,152
+PC,Post 10 Minutes,Barney,4,124
+PC,Post 20 Minutes,Barney,4,132
+PC,Pre,Barney,5,148
+PC,Post Sprints,Barney,5,212
+PC,Post Jumps,Barney,5,208
+PC,Post A Frame,Barney,5,188
+PC,Post Run,Barney,5,160
+PC,Post 10 Minutes,Barney,5,128
+PC,Post 20 Minutes,Barney,5,136
+Baseline,Pre,Jake,1,102
+Baseline,Post Sprints,Jake,1,160
+Baseline,Post Jumps,Jake,1,140
+Baseline,Post A Frame,Jake,1,144
+Baseline,Post Run,Jake,1,155
+Baseline,Post 10 Minutes,Jake,1,132
+Baseline,Post 20 Minutes,Jake,1,114
+Baseline,Pre,Jake,2,100
+Baseline,Post Sprints,Jake,2,165
+Baseline,Post Jumps,Jake,2,130
+Baseline,Post A Frame,Jake,2,140
+Baseline,Post Run,Jake,2,125
+Baseline,Post 10 Minutes,Jake,2,105
+Baseline,Post 20 Minutes,Jake,2,95
+Baseline,Pre,Jake,3,100
+Baseline,Post Sprints,Jake,3,160
+Baseline,Post Jumps,Jake,3,120
+Baseline,Post A Frame,Jake,3,100
+Baseline,Post Run,Jake,3,126
+Baseline,Post 10 Minutes,Jake,3,115
+Baseline,Post 20 Minutes,Jake,3,105
+Baseline,Pre,Jake,4,110
+Baseline,Post Sprints,Jake,4,162
+Baseline,Post Jumps,Jake,4,145
+Baseline,Post A Frame,Jake,4,144
+Baseline,Post Run,Jake,4,130
+Baseline,Post 10 Minutes,Jake,4,120
+Baseline,Post 20 Minutes,Jake,4,115
+Baseline,Pre,Jake,5,110
+Baseline,Post Sprints,Jake,5,145
+Baseline,Post Jumps,Jake,5,144
+Baseline,Post A Frame,Jake,5,126
+Baseline,Post Run,Jake,5,120
+Baseline,Post 10 Minutes,Jake,5,108
+Baseline,Post 20 Minutes,Jake,5,108
+PC,Pre,Jake,1,152
+PC,Post Sprints,Jake,1,160
+PC,Post Jumps,Jake,1,164
+PC,Post A Frame,Jake,1,144
+PC,Post Run,Jake,1,184
+PC,Post 10 Minutes,Jake,1,180
+PC,Post 20 Minutes,Jake,1,152
+PC,Pre,Jake,2,128
+PC,Post Sprints,Jake,2,156
+PC,Post Jumps,Jake,2,128
+PC,Post A Frame,Jake,2,124
+PC,Post Run,Jake,2,140
+PC,Post 10 Minutes,Jake,2,120
+PC,Post 20 Minutes,Jake,2,128
+PC,Pre,Jake,3,128
+PC,Post Sprints,Jake,3,160
+PC,Post Jumps,Jake,3,128
+PC,Post A Frame,Jake,3,128
+PC,Post Run,Jake,3,156
+PC,Post 10 Minutes,Jake,3,120
+PC,Post 20 Minutes,Jake,3,108
+PC,Pre,Jake,4,112
+PC,Post Sprints,Jake,4,172
+PC,Post Jumps,Jake,4,140
+PC,Post A Frame,Jake,4,132
+PC,Post Run,Jake,4,156
+PC,Post 10 Minutes,Jake,4,120
+PC,Post 20 Minutes,Jake,4,120
+PC,Pre,Jake,5,124
+PC,Post Sprints,Jake,5,164
+PC,Post Jumps,Jake,5,140
+PC,Post A Frame,Jake,5,136
+PC,Post Run,Jake,5,152
+PC,Post 10 Minutes,Jake,5,114
+PC,Post 20 Minutes,Jake,5,112
+Baseline,Pre,Jensen,1,160
+Baseline,Post Sprints,Jensen,1,192
+Baseline,Post Jumps,Jensen,1,176
+Baseline,Post A Frame,Jensen,1,150
+Baseline,Post Run,Jensen,1,150
+Baseline,Post 10 Minutes,Jensen,1,130
+Baseline,Post 20 Minutes,Jensen,1,170
+Baseline,Pre,Jensen,2,90
+Baseline,Post Sprints,Jensen,2,180
+Baseline,Post Jumps,Jensen,2,170
+Baseline,Post A Frame,Jensen,2,170
+Baseline,Post Run,Jensen,2,156
+Baseline,Post 10 Minutes,Jensen,2,115
+Baseline,Post 20 Minutes,Jensen,2,110
+Baseline,Pre,Jensen,3,150
+Baseline,Post Sprints,Jensen,3,185
+Baseline,Post Jumps,Jensen,3,198
+Baseline,Post A Frame,Jensen,3,145
+Baseline,Post Run,Jensen,3,144
+Baseline,Post 10 Minutes,Jensen,3,140
+Baseline,Post 20 Minutes,Jensen,3,115
+Baseline,Pre,Jensen,4,120
+Baseline,Post Sprints,Jensen,4,190
+Baseline,Post Jumps,Jensen,4,165
+Baseline,Post A Frame,Jensen,4,176
+Baseline,Post Run,Jensen,4,140
+Baseline,Post 10 Minutes,Jensen,4,125
+Baseline,Post 20 Minutes,Jensen,4,105
+Baseline,Pre,Jensen,5,135
+Baseline,Post Sprints,Jensen,5,186
+Baseline,Post Jumps,Jensen,5,170
+Baseline,Post A Frame,Jensen,5,160
+Baseline,Post Run,Jensen,5,150
+Baseline,Post 10 Minutes,Jensen,5,115
+Baseline,Post 20 Minutes,Jensen,5,105
+PC,Pre,Jensen,1,168
+PC,Post Sprints,Jensen,1,182
+PC,Post Jumps,Jensen,1,152
+PC,Post A Frame,Jensen,1,140
+PC,Post Run,Jensen,1,152
+PC,Post 10 Minutes,Jensen,1,140
+PC,Post 20 Minutes,Jensen,1,152
+PC,Pre,Jensen,2,148
+PC,Post Sprints,Jensen,2,172
+PC,Post Jumps,Jensen,2,160
+PC,Post A Frame,Jensen,2,140
+PC,Post Run,Jensen,2,140
+PC,Post 10 Minutes,Jensen,2,132
+PC,Post 20 Minutes,Jensen,2,116
+PC,Pre,Jensen,3,96
+PC,Post Sprints,Jensen,3,180
+PC,Post Jumps,Jensen,3,152
+PC,Post A Frame,Jensen,3,140
+PC,Post Run,Jensen,3,140
+PC,Post 10 Minutes,Jensen,3,160
+PC,Post 20 Minutes,Jensen,3,120
+PC,Pre,Jensen,4,188
+PC,Post Sprints,Jensen,4,188
+PC,Post Jumps,Jensen,4,152
+PC,Post A Frame,Jensen,4,144
+PC,Post Run,Jensen,4,140
+PC,Post 10 Minutes,Jensen,4,120
+PC,Post 20 Minutes,Jensen,4,104
+PC,Pre,Jensen,5,152
+PC,Post Sprints,Jensen,5,172
+PC,Post Jumps,Jensen,5,164
+PC,Post A Frame,Jensen,5,152
+PC,Post Run,Jensen,5,156
+PC,Post 10 Minutes,Jensen,5,116
+PC,Post 20 Minutes,Jensen,5,104
+Baseline,Pre,Nellie,1,96
+Baseline,Post Sprints,Nellie,1,126
+Baseline,Post Jumps,Nellie,1,102
+Baseline,Post A Frame,Nellie,1,108
+Baseline,Post Run,Nellie,1,85
+Baseline,Post 10 Minutes,Nellie,1,80
+Baseline,Post 20 Minutes,Nellie,1,66
+Baseline,Pre,Nellie,2,66
+Baseline,Post Sprints,Nellie,2,125
+Baseline,Post Jumps,Nellie,2,135
+Baseline,Post A Frame,Nellie,2,130
+Baseline,Post Run,Nellie,2,116
+Baseline,Post 10 Minutes,Nellie,2,96
+Baseline,Post 20 Minutes,Nellie,2,80
+Baseline,Pre,Nellie,3,105
+Baseline,Post Sprints,Nellie,3,160
+Baseline,Post Jumps,Nellie,3,110
+Baseline,Post A Frame,Nellie,3,116
+Baseline,Post Run,Nellie,3,110
+Baseline,Post 10 Minutes,Nellie,3,100
+Baseline,Post 20 Minutes,Nellie,3,80
+Baseline,Pre,Nellie,4,100
+Baseline,Post Sprints,Nellie,4,135
+Baseline,Post Jumps,Nellie,4,115
+Baseline,Post A Frame,Nellie,4,102
+Baseline,Post Run,Nellie,4,108
+Baseline,Post 10 Minutes,Nellie,4,85
+Baseline,Post 20 Minutes,Nellie,4,78
+Baseline,Pre,Nellie,5,95
+Baseline,Post Sprints,Nellie,5,140
+Baseline,Post Jumps,Nellie,5,105
+Baseline,Post A Frame,Nellie,5,116
+Baseline,Post Run,Nellie,5,100
+Baseline,Post 10 Minutes,Nellie,5,84
+Baseline,Post 20 Minutes,Nellie,5,65
+PC,Pre,Nellie,1,108
+PC,Post Sprints,Nellie,1,136
+PC,Post Jumps,Nellie,1,116
+PC,Post A Frame,Nellie,1,128
+PC,Post Run,Nellie,1,128
+PC,Post 10 Minutes,Nellie,1,100
+PC,Post 20 Minutes,Nellie,1,88
+PC,Pre,Nellie,2,108
+PC,Post Sprints,Nellie,2,144
+PC,Post Jumps,Nellie,2,108
+PC,Post A Frame,Nellie,2,104
+PC,Post Run,Nellie,2,92
+PC,Post 10 Minutes,Nellie,2,84
+PC,Post 20 Minutes,Nellie,2,96
+PC,Pre,Nellie,3,136
+PC,Post Sprints,Nellie,3,156
+PC,Post Jumps,Nellie,3,128
+PC,Post A Frame,Nellie,3,128
+PC,Post Run,Nellie,3,96
+PC,Post 10 Minutes,Nellie,3,88
+PC,Post 20 Minutes,Nellie,3,88
+PC,Pre,Nellie,4,116
+PC,Post Sprints,Nellie,4,148
+PC,Post Jumps,Nellie,4,132
+PC,Post A Frame,Nellie,4,112
+PC,Post Run,Nellie,4,104
+PC,Post 10 Minutes,Nellie,4,96
+PC,Post 20 Minutes,Nellie,4,76
+PC,Pre,Nellie,5,120
+PC,Post Sprints,Nellie,5,150
+PC,Post Jumps,Nellie,5,120
+PC,Post A Frame,Nellie,5,120
+PC,Post Run,Nellie,5,120
+PC,Post 10 Minutes,Nellie,5,88
+PC,Post 20 Minutes,Nellie,5,88
+Baseline,Pre,Nelson,1,75
+Baseline,Post Sprints,Nelson,1,110
+Baseline,Post Jumps,Nelson,1,102
+Baseline,Post A Frame,Nelson,1,78
+Baseline,Post Run,Nelson,1,90
+Baseline,Post 10 Minutes,Nelson,1,66
+Baseline,Post 20 Minutes,Nelson,1,65
+Baseline,Pre,Nelson,2,90
+Baseline,Post Sprints,Nelson,2,120
+Baseline,Post Jumps,Nelson,2,90
+Baseline,Post A Frame,Nelson,2,100
+Baseline,Post Run,Nelson,2,105
+Baseline,Post 10 Minutes,Nelson,2,78
+Baseline,Post 20 Minutes,Nelson,2,66
+Baseline,Pre,Nelson,3,78
+Baseline,Post Sprints,Nelson,3,95
+Baseline,Post Jumps,Nelson,3,95
+Baseline,Post A Frame,Nelson,3,108
+Baseline,Post Run,Nelson,3,95
+Baseline,Post 10 Minutes,Nelson,3,80
+Baseline,Post 20 Minutes,Nelson,3,78
+Baseline,Pre,Nelson,4,95
+Baseline,Post Sprints,Nelson,4,100
+Baseline,Post Jumps,Nelson,4,96
+Baseline,Post A Frame,Nelson,4,80
+Baseline,Post Run,Nelson,4,115
+Baseline,Post 10 Minutes,Nelson,4,65
+Baseline,Post 20 Minutes,Nelson,4,70
+Baseline,Pre,Nelson,5,100
+Baseline,Post Sprints,Nelson,5,125
+Baseline,Post Jumps,Nelson,5,116
+Baseline,Post A Frame,Nelson,5,105
+Baseline,Post Run,Nelson,5,120
+Baseline,Post 10 Minutes,Nelson,5,90
+Baseline,Post 20 Minutes,Nelson,5,80
+PC,Pre,Nelson,1,92
+PC,Post Sprints,Nelson,1,120
+PC,Post Jumps,Nelson,1,96
+PC,Post A Frame,Nelson,1,92
+PC,Post Run,Nelson,1,108
+PC,Post 10 Minutes,Nelson,1,72
+PC,Post 20 Minutes,Nelson,1,76
+PC,Pre,Nelson,2,108
+PC,Post Sprints,Nelson,2,116
+PC,Post Jumps,Nelson,2,76
+PC,Post A Frame,Nelson,2,100
+PC,Post Run,Nelson,2,84
+PC,Post 10 Minutes,Nelson,2,92
+PC,Post 20 Minutes,Nelson,2,84
+PC,Pre,Nelson,3,88
+PC,Post Sprints,Nelson,3,88
+PC,Post Jumps,Nelson,3,84
+PC,Post A Frame,Nelson,3,96
+PC,Post Run,Nelson,3,88
+PC,Post 10 Minutes,Nelson,3,68
+PC,Post 20 Minutes,Nelson,3,76
+PC,Pre,Nelson,4,92
+PC,Post Sprints,Nelson,4,100
+PC,Post Jumps,Nelson,4,100
+PC,Post A Frame,Nelson,4,88
+PC,Post Run,Nelson,4,104
+PC,Post 10 Minutes,Nelson,4,68
+PC,Post 20 Minutes,Nelson,4,72
+PC,Pre,Nelson,5,88
+PC,Post Sprints,Nelson,5,100
+PC,Post Jumps,Nelson,5,92
+PC,Post A Frame,Nelson,5,96
+PC,Post Run,Nelson,5,96
+PC,Post 10 Minutes,Nelson,5,80
+PC,Post 20 Minutes,Nelson,5,84
+Baseline,Pre,Otis ,1,110
+Baseline,Post Sprints,Otis ,1,176
+Baseline,Post Jumps,Otis ,1,145
+Baseline,Post A Frame,Otis ,1,144
+Baseline,Post Run,Otis ,1,115
+Baseline,Post 10 Minutes,Otis ,1,90
+Baseline,Post 20 Minutes,Otis ,1,105
+Baseline,Pre,Otis ,2,105
+Baseline,Post Sprints,Otis ,2,175
+Baseline,Post Jumps,Otis ,2,130
+Baseline,Post A Frame,Otis ,2,135
+Baseline,Post Run,Otis ,2,130
+Baseline,Post 10 Minutes,Otis ,2,120
+Baseline,Post 20 Minutes,Otis ,2,110
+Baseline,Pre,Otis ,3,130
+Baseline,Post Sprints,Otis ,3,135
+Baseline,Post Jumps,Otis ,3,125
+Baseline,Post A Frame,Otis ,3,120
+Baseline,Post Run,Otis ,3,108
+Baseline,Post 10 Minutes,Otis ,3,95
+Baseline,Post 20 Minutes,Otis ,3,85
+Baseline,Pre,Otis ,4,120
+Baseline,Post Sprints,Otis ,4,176
+Baseline,Post Jumps,Otis ,4,150
+Baseline,Post A Frame,Otis ,4,140
+Baseline,Post Run,Otis ,4,115
+Baseline,Post 10 Minutes,Otis ,4,115
+Baseline,Post 20 Minutes,Otis ,4,102
+Baseline,Pre,Otis ,5,140
+Baseline,Post Sprints,Otis ,5,140
+Baseline,Post Jumps,Otis ,5,125
+Baseline,Post A Frame,Otis ,5,120
+Baseline,Post Run,Otis ,5,130
+Baseline,Post 10 Minutes,Otis ,5,115
+Baseline,Post 20 Minutes,Otis ,5,75
+PC,Pre,Otis ,1,114
+PC,Post Sprints,Otis ,1,172
+PC,Post Jumps,Otis ,1,132
+PC,Post A Frame,Otis ,1,116
+PC,Post Run,Otis ,1,100
+PC,Post 10 Minutes,Otis ,1,80
+PC,Post 20 Minutes,Otis ,1,88
+PC,Pre,Otis ,2,116
+PC,Post Sprints,Otis ,2,156
+PC,Post Jumps,Otis ,2,140
+PC,Post A Frame,Otis ,2,116
+PC,Post Run,Otis ,2,108
+PC,Post 10 Minutes,Otis ,2,100
+PC,Post 20 Minutes,Otis ,2,104
+PC,Pre,Otis ,3,144
+PC,Post Sprints,Otis ,3,172
+PC,Post Jumps,Otis ,3,124
+PC,Post A Frame,Otis ,3,118
+PC,Post Run,Otis ,3,108
+PC,Post 10 Minutes,Otis ,3,92
+PC,Post 20 Minutes,Otis ,3,88
+PC,Pre,Otis ,4,108
+PC,Post Sprints,Otis ,4,160
+PC,Post Jumps,Otis ,4,128
+PC,Post A Frame,Otis ,4,120
+PC,Post Run,Otis ,4,116
+PC,Post 10 Minutes,Otis ,4,108
+PC,Post 20 Minutes,Otis ,4,96
+PC,Pre,Otis ,5,120
+PC,Post Sprints,Otis ,5,156
+PC,Post Jumps,Otis ,5,136
+PC,Post A Frame,Otis ,5,112
+PC,Post Run,Otis ,5,104
+PC,Post 10 Minutes,Otis ,5,104
+PC,Post 20 Minutes,Otis ,5,92
+Baseline,Pre,Quigley,1,116
+Baseline,Post Sprints,Quigley,1,132
+Baseline,Post Jumps,Quigley,1,146
+Baseline,Post A Frame,Quigley,1,120
+Baseline,Post Run,Quigley,1,120
+Baseline,Post 10 Minutes,Quigley,1,110
+Baseline,Post 20 Minutes,Quigley,1,85
+Baseline,Pre,Quigley,2,90
+Baseline,Post Sprints,Quigley,2,126
+Baseline,Post Jumps,Quigley,2,150
+Baseline,Post A Frame,Quigley,2,150
+Baseline,Post Run,Quigley,2,126
+Baseline,Post 10 Minutes,Quigley,2,96
+Baseline,Post 20 Minutes,Quigley,2,90
+Baseline,Pre,Quigley,3,138
+Baseline,Post Sprints,Quigley,3,144
+Baseline,Post Jumps,Quigley,3,135
+Baseline,Post A Frame,Quigley,3,150
+Baseline,Post Run,Quigley,3,145
+Baseline,Post 10 Minutes,Quigley,3,110
+Baseline,Post 20 Minutes,Quigley,3,85
+Baseline,Pre,Quigley,4,120
+Baseline,Post Sprints,Quigley,4,150
+Baseline,Post Jumps,Quigley,4,144
+Baseline,Post A Frame,Quigley,4,145
+Baseline,Post Run,Quigley,4,108
+Baseline,Post 10 Minutes,Quigley,4,96
+Baseline,Post 20 Minutes,Quigley,4,90
+Baseline,Pre,Quigley,5,110
+Baseline,Post Sprints,Quigley,5,150
+Baseline,Post Jumps,Quigley,5,115
+Baseline,Post A Frame,Quigley,5,150
+Baseline,Post Run,Quigley,5,125
+Baseline,Post 10 Minutes,Quigley,5,110
+Baseline,Post 20 Minutes,Quigley,5,110
+PC,Pre,Quigley,1,104
+PC,Post Sprints,Quigley,1,152
+PC,Post Jumps,Quigley,1,136
+PC,Post A Frame,Quigley,1,140
+PC,Post Run,Quigley,1,152
+PC,Post 10 Minutes,Quigley,1,120
+PC,Post 20 Minutes,Quigley,1,112
+PC,Pre,Quigley,2,92
+PC,Post Sprints,Quigley,2,160
+PC,Post Jumps,Quigley,2,144
+PC,Post A Frame,Quigley,2,148
+PC,Post Run,Quigley,2,108
+PC,Post 10 Minutes,Quigley,2,96
+PC,Post 20 Minutes,Quigley,2,112
+PC,Pre,Quigley,3,120
+PC,Post Sprints,Quigley,3,148
+PC,Post Jumps,Quigley,3,144
+PC,Post A Frame,Quigley,3,138
+PC,Post Run,Quigley,3,116
+PC,Post 10 Minutes,Quigley,3,100
+PC,Post 20 Minutes,Quigley,3,92
+PC,Pre,Quigley,4,100
+PC,Post Sprints,Quigley,4,172
+PC,Post Jumps,Quigley,4,160
+PC,Post A Frame,Quigley,4,144
+PC,Post Run,Quigley,4,116
+PC,Post 10 Minutes,Quigley,4,108
+PC,Post 20 Minutes,Quigley,4,88
+PC,Pre,Quigley,5,128
+PC,Post Sprints,Quigley,5,176
+PC,Post Jumps,Quigley,5,152
+PC,Post A Frame,Quigley,5,144
+PC,Post Run,Quigley,5,132
+PC,Post 10 Minutes,Quigley,5,96
+PC,Post 20 Minutes,Quigley,5,92
+Baseline,Pre,Rosie,1,120
+Baseline,Post Sprints,Rosie,1,165
+Baseline,Post Jumps,Rosie,1,150
+Baseline,Post A Frame,Rosie,1,150
+Baseline,Post Run,Rosie,1,140
+Baseline,Post 10 Minutes,Rosie,1,120
+Baseline,Post 20 Minutes,Rosie,1,132
+Baseline,Pre,Rosie,2,120
+Baseline,Post Sprints,Rosie,2,160
+Baseline,Post Jumps,Rosie,2,144
+Baseline,Post A Frame,Rosie,2,145
+Baseline,Post Run,Rosie,2,110
+Baseline,Post 10 Minutes,Rosie,2,110
+Baseline,Post 20 Minutes,Rosie,2,110
+Baseline,Pre,Rosie,3,126
+Baseline,Post Sprints,Rosie,3,168
+Baseline,Post Jumps,Rosie,3,135
+Baseline,Post A Frame,Rosie,3,125
+Baseline,Post Run,Rosie,3,130
+Baseline,Post 10 Minutes,Rosie,3,115
+Baseline,Post 20 Minutes,Rosie,3,120
+Baseline,Pre,Rosie,4,145
+Baseline,Post Sprints,Rosie,4,160
+Baseline,Post Jumps,Rosie,4,145
+Baseline,Post A Frame,Rosie,4,150
+Baseline,Post Run,Rosie,4,120
+Baseline,Post 10 Minutes,Rosie,4,126
+Baseline,Post 20 Minutes,Rosie,4,110
+Baseline,Pre,Rosie,5,155
+Baseline,Post Sprints,Rosie,5,16
+Baseline,Post Jumps,Rosie,5,144
+Baseline,Post A Frame,Rosie,5,138
+Baseline,Post Run,Rosie,5,125
+Baseline,Post 10 Minutes,Rosie,5,120
+Baseline,Post 20 Minutes,Rosie,5,125
+PC,Pre,Rosie,1,148
+PC,Post Sprints,Rosie,1,164
+PC,Post Jumps,Rosie,1,136
+PC,Post A Frame,Rosie,1,136
+PC,Post Run,Rosie,1,132
+PC,Post 10 Minutes,Rosie,1,116
+PC,Post 20 Minutes,Rosie,1,116
+PC,Pre,Rosie,2,140
+PC,Post Sprints,Rosie,2,168
+PC,Post Jumps,Rosie,2,136
+PC,Post A Frame,Rosie,2,144
+PC,Post Run,Rosie,2,120
+PC,Post 10 Minutes,Rosie,2,104
+PC,Post 20 Minutes,Rosie,2,124
+PC,Pre,Rosie,3,192
+PC,Post Sprints,Rosie,3,176
+PC,Post Jumps,Rosie,3,148
+PC,Post A Frame,Rosie,3,144
+PC,Post Run,Rosie,3,128
+PC,Post 10 Minutes,Rosie,3,116
+PC,Post 20 Minutes,Rosie,3,112
+PC,Pre,Rosie,4,172
+PC,Post Sprints,Rosie,4,168
+PC,Post Jumps,Rosie,4,148
+PC,Post A Frame,Rosie,4,128
+PC,Post Run,Rosie,4,120
+PC,Post 10 Minutes,Rosie,4,108
+PC,Post 20 Minutes,Rosie,4,104
+PC,Pre,Rosie,5,116
+PC,Post Sprints,Rosie,5,168
+PC,Post Jumps,Rosie,5,128
+PC,Post A Frame,Rosie,5,136
+PC,Post Run,Rosie,5,128
+PC,Post 10 Minutes,Rosie,5,128
+PC,Post 20 Minutes,Rosie,5,112
