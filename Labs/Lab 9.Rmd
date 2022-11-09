@@ -1,0 +1,89 @@
+---
+title: "Lab 9"
+author: "Steven Cabrera"
+date: "2022-10-26"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+library(readr)
+library(ggplot2)
+library(dplyr)
+library(car)
+library(carData)
+library(nlme)
+library(lme4)
+library(sem)
+```
+
+```{r, include = F, echo = F}
+data1 <- read_csv("Lab Data/Lab9/RCWData.csv")
+global1 <- glm(data = data1, Present~Burned+StandAge+TreeDensity+
+              RoadDensity+HumanDensity+PileatedDensity+FlyingSquirrel,
+            family = binomial)
+summary(global1)
+backward <- glm(data = data1, Present~Burned+StandAge+TreeDensity,
+            family = binomial)
+summary(backward)
+exp(1.23205)
+confint(backward)
+
+rcwnew <- data.frame(Burned=1, StandAge = 80, TreeDensity = 13)
+dictions <- predict(backward,rcwnew, type = "response")
+dictions
+```
+
+## #1 
+
+Using a backward stepwise regression, we built a model that includes "Burned", "Stand Age", and "Tree Density" to test their effect on woodpecker detection. We removed "Human Density", "Flying Squirrels", and "Road Density".  
+
+We found that woodpecker detection was 3.43 (1.26 - 10.1; 95% C.L.) times more likely in burned stands compared to unburned stands (p = 0.019).  
+
+For each 1 year increase in stand age we observed a 5.5% (3.8 - 7.6%; ; 95% C.L.) increase in woodpecker detection (p = 5.02e-09).  
+
+For each 1 tree/ha increase in tree density, we observed a 18.6% (11.7 - 26.9%; 95% C.L.) decrease in woodpecker detection (1.19e-06).  
+
+There is 0.79 probability that a woodpecker is detected in a habitat that is burned, 80 years old, with a tree density of 13 trees/ha.
+
+```{r, include = F, echo = F}
+data2 <- read_csv("Lab Data/Lab9/Assignment9c.csv")
+x=seq(1,length(data2$Age),1)
+training <- sample(x,size = length(data2$Age)*0.75,replace = F)
+datatrain <- data2[training,]
+datatest <- data2[-training,]
+res2 <- lm(Age~BodyLength+Sex+Mass+ColorSaturation, data = datatrain)
+summary(res2)
+dictions2 <- predict(res2,datatest)
+validation <- lm(dictions2~datatest$Age)
+summary(validation)
+plot(dictions2~datatest$Age)
+
+#now do k fold
+library(caret)
+fitControl=trainControl(method="repeatedcv",repeats=1) 
+kfold <- train(Age~BodyLength+Sex+Mass+ColorSaturation, data = data2,
+               method = "lm", trControl=fitControl)
+summary(kfold)
+kfold$finalModel
+kfold$results
+confint(kfold$final)
+```
+
+## #2 
+
+```{r}
+plot(dictions2~datatest$Age)
+```
+
+Using cross-validation, the predictive performance of this model is not ideal. The RMSE is 7.351 and adjusted r2 = 0.53 when comparing testing data to model predictions.  
+
+Using k-fold cross-validation, we observed an RMSE 8.04 (+/- 1.2; +/- SE) and r2 of 0.66 (+/- 0.13; +/- SE).  
+
+For each 1 cm increase in body length, ponies are 1.03 months older.  
+Male ponies are 6.5 months older than female ponies.  
+For each 0.3 g increase in mass, we expect ponies to increase in age by 0.3.  
+For each 1% increase in color saturation, we expect ponies to increase
+in age by 0.3.  
+

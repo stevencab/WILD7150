@@ -1,0 +1,95 @@
+---
+title: "Lab 11"
+author: "Steven Cabrera"
+date: "2022-11-09"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+library(readr)
+library(ggplot2)
+library(dplyr)
+library(car)
+library(carData)
+library(nlme)
+library(lme4)
+library(dagitty)
+```
+
+```{r, include = F, echo = F}
+data1 <- read_csv("Lab Data/Lab10/BlackburnData2.csv")
+
+testy = dagitty("dag{
+              Area->Isolation->NativeBirds->TotalExtinctions
+              Isolation->Predators->TotalExtinctions
+              Isolation->TotalExtinctions
+              Area->TotalExtinctions
+              Area->Predators
+              Area->NativeBirds
+              Isolation<->Area
+}")
+
+
+
+adjustmentSets(testy,"Area","TotalExtinctions")
+
+res1 <- glm(data = data1, TotalExtinctions~Area+Isolation,
+            family = poisson)
+summary(res1)
+confint(res1)
+vif(res1)
+```
+1.  
+```{r}
+plot(testy)
+```
+
+2. Inlcude "Isolation" only with "Area"
+
+4. For each 100,000-ha increase in area, we observed 1.66 (1.56 - 1.75; 95% C.L) times as many extinctions (p < 2e-16).  
+
+5. The vif of area and isolation is 1.095.  
+
+```{r, include = F, echo = F}
+#global model
+res2 <- glm(data = data1, TotalExtinctions~Area+Isolation+
+              Predators+NativeBirds,
+            family = poisson)
+summary(res2)
+confint(res2)
+
+```
+
+6. For each 100,000-ha increase in area, we observed 0.85 (0.74 - 0.98; 95% C.L) times as many extinctions (p = 0.026). **This model has overcontrol bias.**  
+
+```{r, include = F, echo = F}
+data1
+
+x=seq(1,length(data1$NativeBirds),1)
+training <- sample(x,size = length(data1$NativeBirds)*0.75,replace = F)
+datatrain <- data1[training,]
+datatest <- data1[-training,]
+res3 <- glm(data = data1, TotalExtinctions~Area+Isolation+
+              Predators+NativeBirds,
+            family = poisson)
+summary(res3)
+confint(res3)
+dictions2 <- predict(res3,datatest)
+validation <- lm(dictions2~datatest$TotalExtinctions)
+summary(validation)
+
+rcwnew <- data.frame(Area=20000, Isolation = 2000,
+                     NativeBirds = 30, Predators = 0)
+dictions <- predict(res3,rcwnew, type = "response")
+
+```
+
+7. Using step-wise regression, we included all of the variables in the global model because they were all significant.
+
+8. The predicted number of extinctions for an island of 20,000 ha, 2000 km from the mainland, with 30 native birds, and 0 predators is **1.07**.  
+
+9. The link between isolation and total extinctions is necessary because the relationship is significant - for each 1-km increase in isolation, we observed a 1.63 (1.54 - 1.72; 95% CL) times as many extinctions (p < 2e-16).
+ 
+10. Yes, latitude could be potentially important. It is significant when added to the model (p = 0.000454), but acts as  a child due to it probably does not influence the other variables.
