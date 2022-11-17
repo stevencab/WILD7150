@@ -1,0 +1,88 @@
+---
+title: "Lab 12"
+author: "Steven Cabrera"
+date: "2022-11-16"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+library(readr)
+library(ggplot2)
+library(dplyr)
+library(car)
+library(carData)
+library(nlme)
+library(lme4)
+library(dagitty)
+library(lattice)
+library(MASS)
+```
+
+## PCA 
+```{r, include = F, echo = F}
+data1 <- read_csv("Lab Data/Lab12/WolfMorph2.csv")
+res1 <- lm(data=data1, Predation~BodyLength+Mass+HFL+Tail)
+summary(res1)
+confint(res1)
+ptest <- princomp(~BodyLength+Mass+HFL+Tail, data=data1)
+summary(ptest)
+ptest$loadings
+res2 <- lm(data1$Predation~ptest$scores[,1]+ptest$scores[,2]+ptest$scores[,3]+ptest$scores[,4])
+summary(res2)
+
+```
+
+1. For each 1 cm increase in body length, we observed a 0.065 (+/- 0.18 C.I.) increase in predation (p = 0.49). **non-significant result**    
+For each 1 kg increase in mass, we observed a 0.067 (+/- 0.17 C.I.) decrease in predation (p = 0.43). **non-significant result**  
+For each 1 cm increase in hind-foot length, we observed a 0.18 (+/- 0.32 C.I.) decrease in predation (p = 0.27). **non-significant result**  
+For each 1 cm increase in tail-length, we observed a 0.11 (+/- 0.18 C.I.) increase in predation (p = 0.24). **non-significant result**  
+2. Run PCA.  
+3. PC1 = 0.991 / PC2 = 0.004 / PC3 = 0.002 / PC4 = 0.001  
+4. PC1 is characterized by animals with long body length, long tails, large masses, and long hind foot length - so maybe a Great Pyrenees.  
+PC2 is characterized low mass and long tails - so maybe a chihauhau.  
+PC3 is characterized by long body length, low mass, long hind foot length, and short tails - so maybe a Samuel Krebsbach.  
+PC4 is characterized by long body length, short hind foot length, and short tail lengths - so maybe a weiner dog.  
+5. Run the lm of predation and PC scores.  
+6. PC1 is the only significant factor in this lm (p  <2e-16). PC2 (p = 0.17), PC3 (p = 0.55), PC4 (p = 0.31) are all **non-significant results**.  
+
+## DFA  
+```{r, include = F, echo = F}
+data2 <- read_csv("Lab Data/Lab12/WolfMorph.csv")
+data2
+splom(~data.frame(BodyLength,Mass,HFL,Ear),data=data2,groups=Animal)
+res3 <- manova(cbind(BodyLength,Mass,HFL,Ear)~Animal,data=data2)
+summary(res3)
+summary(aov(res3))
+res4=lda(Animal~BodyLength+Mass+HFL+Ear,data=data2)
+res4
+plot(res4)
+predict(res4)
+table(data2$Animal,predict(res4)$class)
+
+```
+
+1.  
+```{r, echo = F}
+splom(~data.frame(BodyLength,Mass,HFL,Ear),data=data2,groups=Animal)
+
+```
+
+2. MANOVA F-statistic is 116.08. Body length (p < 2.2e-16), mass (p < 2.2e-16), hind-foot length (4.8e-16), and ears (p < 2.2e-16) are all significant among the three groups.   
+3. Coyotes have short body lengths, lower masses, intermediate hind-food lengths, and short ears.  
+Grey wolves have long bodies, higher masses, short hind-foot lengths, and short ears.  
+Red wolves have large bodies, intermediate masses, long hind-foot lengths, and long ears.  
+4. LD1 is associated with shorter bodies, lower masses, long hind-foot lengths, and long ears.  
+LD2 is associated with longer body sizes, higher masses, shorter hind-foot lengths, and long ears.  
+5. The proportion of trace determined by LD1 is 0.7086.  
+6. The DFA did very well predicting class membership. 48/49 of coyotes and grey wolves were predicted correctly, and 49/51 red wolves were predicted correctly. See table below. 
+
+```{r, echo = F}
+table(data2$Animal,predict(res4)$class)
+```
+
+7.  
+```{r, echo = F}
+plot(res4)
+```
