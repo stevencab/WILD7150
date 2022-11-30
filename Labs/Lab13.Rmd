@@ -1,0 +1,119 @@
+---
+title: "Lab 13 - Bootstrapping"
+author: "Steven Cabrera"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+library(readr)
+library(ggplot2)
+library(boot)
+```
+
+```{r, include = F, echo = F}
+### import the boot package
+#insert code here to import boot package
+
+
+
+### step 1 - import the data
+#insert code here to import data
+data1 <- read_csv("Lab Data/Lab13/BootPop.csv")
+data1
+### step 2 - analyze the data
+### We'll use a new function for this that fits non-linear
+### equations. It's very similar to lm, but requires a parametric structure
+### and starting values, as I've specified below
+
+parInit=list(a=1,b=1) #this is a list of starting values
+CoyoteResults=nls(CoyoteKill~a*PreyDens/(b+PreyDens),data=data1,start=parInit)
+LynxResults=nls(LynxKill~a*PreyDens/(b+PreyDens),data=data1,start=parInit)
+
+### a is the asymptotic value of the predator kill rate
+### b is the prey density at which half the maximum prey kill rate is achieved
+### nls is a function that fits non-linear least squares models to data
+
+summary(CoyoteResults)
+summary(LynxResults)
+
+### calculate the estimated difference in the asymptotes
+CoyoteA=summary(CoyoteResults)$parameters[1] #extracts the value of a from the coyote regression
+LynxA=summary(LynxResults)$parameters[1] #extracts the value of a from the lynx regression
+Difference=LynxA-CoyoteA #calculates the difference in asymptotes
+Difference ### reports the difference in asymptotes
+
+### step 3 and 4 - write a function to resample and reanalyze the data
+#insert code to complete "bootFunc" below. 
+#Note that you can basically copy and past step 2 into bootFunc
+#although it will requires some modification to work correctly
+
+#use original nls function to calculate asymptotes
+#extract asymptotes from summary
+#calculate difference and return it
+
+bootFunc=function(bootData,repeats){
+  parInit=list(a=1,b=1)
+  resultsCoy=nls(CoyoteKill~a*PreyDens/(b+PreyDens),data=bootData[repeats,],start=parInit)
+  resultsLynx=nls(LynxKill~a*PreyDens/(b+PreyDens),data=bootData[repeats,],start=parInit)
+  asymCoy=summary(resultsCoy)$parameters[1]
+  asymLynx=summary(resultsLynx)$parameters[1]
+  asymDiff=asymCoy-asymLynx
+  return(asymDiff)
+}
+
+
+### Step 5 - repeat function 1000 times
+### create a bootstrapped object that runs the function 1000 times
+#insert code to run bootstrap analysis
+
+set.seed(123)
+
+#Be sure you run this code before you run the bootstrap
+
+#run bootstrap x1000, it works because std.error is not 0 and original difference matches our initial result 
+
+boot.res <- boot(data1,bootFunc,R=1000)
+boot.res
+
+### Step 6 - calculate the confidence interval on the data
+#insert code here to calculate confidence intervals
+
+boot.ci(boot.res)
+
+#using percentile CI at 95%, LCL = -6.003, UCL = -2.674, median = -3.1798
+
+
+### Step 7 - Extract sorted bootstrapped estimates of difference in asymptotes
+# insert code here to extract and sort bootstraped estimates of difference in asymptotes
+
+sort(boot.res$t)
+#using percentile CI at 95%, LCL = -6.003, UCL = -2.674, median = -3.1798
+
+
+### Step 8 - Plot the results
+# insert code here to plot bootstrapped estimates of the difference in asymptotes
+
+#calculate p value by subtracting bootstrap distribution from original estimate using percentile CI
+#and then calculate their mean , p = 0?
+cvs <- quantile(boot.res$t0 - boot.res$t + 1, c(0.025, 0.975))
+mean(boot.res$t > cvs[1] & boot.res$t < cvs[2])
+
+#plot figure
+plot(boot.res)
+```
+
+
+1. Original difference in asymptotes (statistic of interest) = -5.952.  
+2. 95% confidence interval (percentile). LCL = -6.003, UCL = -2.674.  
+3. Median of bootstrap distribution = -3.180.  
+4. Calculated p-value = 0. 
+5.  
+
+```{r, echo = F}
+plot(boot.res)
+
+```
+
