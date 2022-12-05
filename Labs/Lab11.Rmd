@@ -31,7 +31,7 @@ testy = dagitty("dag{
               Isolation<->Area
 }")
 
-
+plot(test)
 
 adjustmentSets(testy,"Area","TotalExtinctions")
 

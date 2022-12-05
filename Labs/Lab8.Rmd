@@ -22,7 +22,7 @@ data1 <- read_csv("Lab Data/Lab8/PeckerData2.csv")
 res1 <- glm(data = data1, Present~Burned+StandAge+TreeDensity, family = binomial)
 summary(res1)
 exp(0.05555)
-confint(res1)
+exp(confint(res1))
 ```
 
 1. We found that woodpecker detection was 4.78 (1.59 - 16.8; 95% C.L.) times as likely in burned stands compared to unburned stands (p = 0.008).  
